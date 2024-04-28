@@ -300,54 +300,54 @@ COLING是由老牌NLP/CL学术组织ICCL（The International Committee on Comput
 
 ### Llama
 
-- ## 模型架构的详细解释
-# LlamaForCausalLM类，这是一个用于因果语言建模的Llama模型
+- // 模型架构的详细解释
+//// LlamaForCausalLM类，这是一个用于因果语言建模的Llama模型
 LlamaForCausalLM(
-  # Llama模型的主体部分
+  //// Llama模型的主体部分
   (model): LlamaModel(
-    # 词嵌入层，将输入的单词（或词汇表中的标记）转换为固定大小的向量
-    # 这里的嵌入维度是4096，词汇表大小是32000，padding_idx=0表示用于填充的标记的索引是0
+    //// 词嵌入层，将输入的单词（或词汇表中的标记）转换为固定大小的向量
+    //// 这里的嵌入维度是4096，词汇表大小是32000，padding_idx=0表示用于填充的标记的索引是0
     (embed_tokens): Embedding(32000, 4096, padding_idx=0)
 
-    # 模型层，由多个LlamaDecoderLayer层组成的列表
-    # 这里使用了32个LlamaDecoderLayer层
+    //// 模型层，由多个LlamaDecoderLayer层组成的列表
+    //// 这里使用了32个LlamaDecoderLayer层
     (layers): ModuleList(
       (0-31): 32 x LlamaDecoderLayer(
-        # 自注意力机制模块，用于计算输入序列中各元素间的相互关系
+        //// 自注意力机制模块，用于计算输入序列中各元素间的相互关系
         (self_attn): LlamaAttention(
-          # 查询（Q）投影层，用于自注意力机制中的查询向量的线性变换
+          //// 查询（Q）投影层，用于自注意力机制中的查询向量的线性变换
           (q_proj): Linear4bit(in_features=4096, out_features=4096, bias=False)
-          # 键（K）投影层，用于自注意力机制中的键向量的线性变换
+          //// 键（K）投影层，用于自注意力机制中的键向量的线性变换
           (k_proj): Linear4bit(in_features=4096, out_features=4096, bias=False)
-          # 值（V）投影层，用于自注意力机制中的值向量的线性变换
+          //// 值（V）投影层，用于自注意力机制中的值向量的线性变换
           (v_proj): Linear4bit(in_features=4096, out_features=4096, bias=False)
-          # 输出（O）投影层，用于自注意力机制计算完后的输出向量的线性变换
+          //// 输出（O）投影层，用于自注意力机制计算完后的输出向量的线性变换
           (o_proj): Linear4bit(in_features=4096, out_features=4096, bias=False)
-          # 旋转位置编码，用于在自注意力机制中引入序列的位置信息
+          //// 旋转位置编码，用于在自注意力机制中引入序列的位置信息
           (rotary_emb): LlamaRotaryEmbedding()
         )
 
-        # 多层感知机模块，用于对自注意力机制的输出进行进一步的处理
+        //// 多层感知机模块，用于对自注意力机制的输出进行进一步的处理
         (mlp): LlamaMLP(
-          # 门控投影层，用于MLP中的门控机制
+          //// 门控投影层，用于MLP中的门控机制
           (gate_proj): Linear4bit(in_features=4096, out_features=11008, bias=False)
-          # 上升投影层，用于MLP中的升维操作
+          //// 上升投影层，用于MLP中的升维操作
           (up_proj): Linear4bit(in_features=4096, out_features=11008, bias=False)
-          # 下降投影层，用于MLP中的降维操作
+          //// 下降投影层，用于MLP中的降维操作
           (down_proj): Linear4bit(in_features=11008, out_features=4096, bias=False)
-          # 激活函数，Swish-like activation（SiLU）
+          //// 激活函数，Swish-like activation（SiLU）
           (act_fn): SiLUActivation()
         )
-        # 输入层归一化，对输入进行标准化处理
+        //// 输入层归一化，对输入进行标准化处理
         (input_layernorm): LlamaRMSNorm()
-        # 注意力后层归一化，对自注意力机制的输出进行标准化处理
+        //// 注意力后层归一化，对自注意力机制的输出进行标准化处理
         (post_attention_layernorm): LlamaRMSNorm()
       )
     )
-    # 最后的层归一化
+    //// 最后的层归一化
     (norm): LlamaRMSNorm()
   )
-  # 语言模型头部，将模型的输出转换回词汇表大小的向量，用于生成预测结果
+  //// 语言模型头部，将模型的输出转换回词汇表大小的向量，用于生成预测结果
   (lm_head): Linear(in_features=4096, out_features=32000, bias=False)
 )
 
@@ -573,14 +573,14 @@ attentions: Optional[Tuple[torch.FloatTensor, ...]] = None
 					- 矩阵分解
 
 						- 在华佗模型训练
-## LoRA注意力维度
-lora_r = 64  # LoRA的秩，这里设置为64
+LoRA注意力维度:
+lora_r = 64  //LoRA的秩，这里设置为64
 
-## LoRA缩放的Alpha参数
-lora_alpha = 16  # LoRA的缩放参数，这里设置为16
+LoRA缩放的Alpha参数:
+lora_alpha = 16  //LoRA的缩放参数，这里设置为16
 
-## LoRA层的dropout概率
-lora_dropout = 0.1  # 设置LoRA层的dropout概率为0.1
+LoRA层的dropout概率:
+lora_dropout = 0.1  //设置LoRA层的dropout概率为0.1
 
 				- QLoRA
 
@@ -599,7 +599,7 @@ lora_dropout = 0.1  # 设置LoRA层的dropout概率为0.1
 				- P-tuning v2
 
 					- 在华佗模型训练
-#  然后创建peft配置，即创建ptuning微调方法的相关配置
+ 然后创建peft配置，即创建ptuning微调方法的相关配置
  peft_config = PromptEncoderConfig(task_type=TaskType.CAUSAL_LM, num_virtual_tokens=20, encoder_hidden_size=128)
 
 	- RLHF
