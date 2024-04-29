@@ -9,18 +9,15 @@
 ###### 感受野
 ###### 卷积计算
 **公式**
-$$输出特征图尺寸=⌊\frac{n+2p−f}{s}⌋+1$$
-**示例1**
-
-输入图片大小为200×200，依次经过
-一层卷积（kernel size 5×5，padding 1，stride 2），
-ooling（kernel size 3×3，padding 0，stride 1），
-又一层卷积（kernel size 3×3，padding 1，stride 1）之后，
-输出特征图大小为( 97 )
-
-**示例2**
-
-卷积神经网络的输入图像尺寸为28x28x3，卷积核大小为3x3x3，卷积核的个数为8，卷积步幅Stride=1，填充值padding=1，则输出的特征图尺寸为(28 宽、28 高、8 深)
+- $输出特征图尺寸=⌊\frac{n+2p−f}{s}⌋+1$
+- **示例1**
+	输入图片大小为200×200，依次经过
+	一层卷积（kernel size 5×5，padding 1，stride 2），
+	ooling（kernel size 3×3，padding 0，stride 1），
+	又一层卷积（kernel size 3×3，padding 1，stride 1）之后，
+	输出特征图大小为( 97 )
+- **示例2**
+	卷积神经网络的输入图像尺寸为28x28x3，卷积核大小为3x3x3，卷积核的个数为8，卷积步幅Stride=1，填充值padding=1，则输出的特征图尺寸为(28 宽、28 高、8 深)
 ##### RNN
 ###### LSTM
 ##### Unet
@@ -28,14 +25,10 @@ ooling（kernel size 3×3，padding 0，stride 1），
 ##### ResNet
 ##### 反向传播公式**
 - 
-  ```math
-	\begin{aligned}
-		&W^{[l]}表示第l层权值,B^{[l]}表示第l层偏置,Z^{[l]}表示l层输出,A^{[l]}表示第l层激活值,G^{[l]}表示第l层激活函数，有\\
-		&dW^{[l]}=\frac{dZ^{[l]}}{(A^{[l-1]})}\\
-		&dB^{[l]}=np.sum(dZ^{[l]},axis=1,keepdim=True)\\
-		&dZ^{[l]}=\frac{dZ^{[l+1]}}{W^{[l+1]}(dG^{[l]})(Z^{[l]})}
-	\end{aligned}
-  ```
+	$W^{[l]}表示第l层权值,B^{[l]}表示第l层偏置,Z^{[l]}表示l层输出,A^{[l]}表示第l层激活值,G^{[l]}表示第l层激活函数，有$
+	$dW^{[l]}=\frac{dZ^{[l]}}{(A^{[l-1]})}$
+	$dB^{[l]}=np.sum(dZ^{[l]},axis=1,keepdim=True)$
+	$dZ^{[l]}=\frac{dZ^{[l+1]}}{W^{[l+1]}(dG^{[l]})(Z^{[l]})}$
 #### SVM
 #### 决策树
 #### 随机森林
@@ -52,10 +45,10 @@ ooling（kernel size 3×3，padding 0，stride 1），
 - 损失函数的可视化
 	- 损失函数值的3D示意图
 		- 横坐标为W，纵坐标为b，针对每一个w和一个b的组合计算出一个损失函数值，用三维图的高度来表示这个损失函数值。右图中的底部并非一个平面，而是一个有些下凹的曲面，只不过曲率较小
-			-  ![损失函数3D示意图](./image/损失函数3D示意图.png)
+			- ![损失函数3D示意图](./image/损失函数3D示意图.png)
 	- 损失函数值的2D示意图
 		- 在平面地图中，我们经常会看到用等高线的方式来表示海拔高度值，右图就是上图在平面上的投影，即损失函数值的等高线图
-			-  ![损失函数2D等高线](./image/损失函数2D等高线.png)
+			- ![损失函数2D等高线](./image/损失函数2D等高线.png)
 ### 结果评价
 - 偏差(通常是训练集loss)和方差(通常是验证集方差)
 	- 高偏差（欠拟合）
@@ -66,11 +59,12 @@ ooling（kernel size 3×3，padding 0，stride 1），
 		- 2.正则化
 			- 正则化
 				- 范数
-					- $$\begin{align}&设V是数域K上的线性空间，对于V的任意向量x, 对应着一个实值 \\&函数∣ ∣ x ∣ ∣，它满足以下3个条件,则称∣ ∣ x ∣ ∣为V上向量x的范数(norm)：\end{align}$$
-						- $$正定性：当x \neq 0时∣ ∣ x ∣ ∣ > 0 ；当且仅当 x = 0 时，∣ ∣ x ∣ ∣ = 0 ；$$
-						- $$齐次性：∣ ∣ k x ∣ ∣ = ∣ k ∣ ∣ ∣ x ∣ ∣ ， k ∈ K ；$$
-						- $$三角不等式：∣ ∣ x + y ∣ ∣ <= ∣ ∣ x ∣ ∣ + ∣ ∣ y ∣ ∣ ， x , y ∈ V $$
-						- $$如果是矩阵要需满足乘法相容性：\forall A,B \in \mathbb C^{m \times n}有 \Vert AB\Vert\le\Vert A\Vert\ \Vert B\Vert$$
+					- $设V是数域K上的线性空间，对于V的任意向量x, 对应着一个实值$
+					  $函数∣ ∣ x ∣ ∣，它满足以下3个条件,则称∣ ∣ x ∣ ∣为V上向量x的范数(norm)：$
+						- $正定性：当x \neq 0时∣ ∣ x ∣ ∣ > 0 ；当且仅当 x = 0 时，∣ ∣ x ∣ ∣ = 0 ；$
+						- $齐次性：∣ ∣ k x ∣ ∣ = ∣ k ∣ ∣ ∣ x ∣ ∣ ， k ∈ K ；$
+						- $三角不等式：∣ ∣ x + y ∣ ∣ <= ∣ ∣ x ∣ ∣ + ∣ ∣ y ∣ ∣ ， x , y ∈ V $
+						- $如果是矩阵要需满足乘法相容性：\forall A,B \in \mathbb C^{m \times n}有 \Vert AB\Vert\le\Vert A\Vert\ \Vert B\Vert$
 					- 向量Lp范数
 						- $$\Vert X \Vert_p=(\sum_{i=1}^n|x_i|^p)^\frac{1}{p},X表示n维向量$$
 							- L1 范数：也称为曼哈顿范数（Manhattan Norm）。L1 范数在一些特定场景下具有稀疏性，能够产生稀疏解
