@@ -27,14 +27,15 @@ ooling（kernel size 3×3，padding 0，stride 1），
 ##### GAN
 ##### ResNet
 ##### 反向传播公式**
-$$
-\begin{aligned}
-	&W^{[l]}表示第l层权值,B^{[l]}表示第l层偏置,Z^{[l]}表示l层输出,A^{[l]}表示第l层激活值,G^{[l]}表示第l层激活函数，有\\
-	&dW^{[l]}=\frac{dZ^{[l]}}{(A^{[l-1]})}\\
-	&dB^{[l]}=np.sum(dZ^{[l]},axis=1,keepdim=True)\\
-	&dZ^{[l]}=\frac{dZ^{[l+1]}}{W^{[l+1]}(dG^{[l]})(Z^{[l]})}
-\end{aligned}
-$$
+- 
+  ```math
+	\begin{aligned}
+		&W^{[l]}表示第l层权值,B^{[l]}表示第l层偏置,Z^{[l]}表示l层输出,A^{[l]}表示第l层激活值,G^{[l]}表示第l层激活函数，有\\
+		&dW^{[l]}=\frac{dZ^{[l]}}{(A^{[l-1]})}\\
+		&dB^{[l]}=np.sum(dZ^{[l]},axis=1,keepdim=True)\\
+		&dZ^{[l]}=\frac{dZ^{[l+1]}}{W^{[l+1]}(dG^{[l]})(Z^{[l]})}
+	\end{aligned}
+  ```
 #### SVM
 #### 决策树
 #### 随机森林
